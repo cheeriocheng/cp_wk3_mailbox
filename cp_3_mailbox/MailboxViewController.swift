@@ -24,25 +24,35 @@ class MailboxViewController: UIViewController {
     }
     
     @IBAction func didPanSingleMessage(panGestureRecognizer: UIPanGestureRecognizer) {
-        let point = panGestureRecognizer.locationInView(view) //the finger position
+        //let point = panGestureRecognizer.locationInView(view) //the finger position
         let translation = panGestureRecognizer.translationInView(view) //the relavent movement
         
+        
+        
         if panGestureRecognizer.state == UIGestureRecognizerState.Began {
-            print("Gesture began at: \(point)")
+           // print("Gesture began at: \(point)")
             
         } else if panGestureRecognizer.state == UIGestureRecognizerState.Changed {
-            print("Gesture changed at: \(point)")
-            singleMessageTrayView.center = CGPoint(x: singleMessageTrayOriginalCenter.x + translation.x, y: singleMessageTrayOriginalCenter.y)
-            
+            //print("Gesture changed at: \(point)")
+            let newCenterX = singleMessageTrayOriginalCenter.x + translation.x
+            singleMessageTrayView.center = CGPoint(x: newCenterX, y: singleMessageTrayOriginalCenter.y)
+            changePanVisual(Float(newCenterX))
         }
         else if panGestureRecognizer.state == UIGestureRecognizerState.Ended {
+            //print("Gesture ended at: \(point)")
+            //upon releasing, return to original position 
+            //TODO add animation
+            singleMessageTrayView.center = singleMessageTrayOriginalCenter
             
-            print("Gesture ended at: \(point)")
+            
         }
         
     }
     
-    
+    func changePanVisual( x: Float ){
+        print(x)
+        
+    }
     
     
     override func didReceiveMemoryWarning() {

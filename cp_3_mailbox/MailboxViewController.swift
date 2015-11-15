@@ -13,6 +13,8 @@ class MailboxViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var singleMessageTrayView: UIView!
+    @IBOutlet weak var rescheduleView: UIView!
+    
     var singleMessageTrayOriginalCenter: CGPoint!
     var rightIconsOriginalCenter: CGPoint!
     var leftIconsOriginalCenter: CGPoint!
@@ -71,12 +73,21 @@ class MailboxViewController: UIViewController {
         }
         else if panGestureRecognizer.state == UIGestureRecognizerState.Ended {
             //print("Gesture ended at: \(point)")
-            
             print("endstate ", endState)
             
+            //trigger the next step
+            if (endState == later){
+                print("show reschedule view ")
+                rescheduleView.alpha =  1
+                
+            }else {
+                
+                //upon releasing, return to original position
+                resetVisuals()
+                
+                
+            }
             
-            //upon releasing, return to original position
-            resetVisuals()
             
             
         }
@@ -158,6 +169,7 @@ class MailboxViewController: UIViewController {
         
         endState  = 0
         
+        rescheduleView.alpha =  0
     }
     
     override func didReceiveMemoryWarning() {

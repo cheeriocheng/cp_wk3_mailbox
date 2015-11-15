@@ -83,6 +83,17 @@
                                     </imageView>
                                 </subviews>
                             </scrollView>
+                            <view contentMode="scaleToFill" id="MHb-hK-pt8" userLabel="rescheduleView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="reschedule" id="cfl-uP-pPw">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -95,6 +106,7 @@
                         <outlet property="leftIconsView" destination="uhL-Kp-25h" id="c7G-ou-17U"/>
                         <outlet property="listIcon" destination="7bR-98-oWe" id="T7w-uU-XGt"/>
                         <outlet property="panBG" destination="Hw2-SI-7tp" id="d9U-4G-2ay"/>
+                        <outlet property="rescheduleView" destination="MHb-hK-pt8" id="1UL-aj-kzV"/>
                         <outlet property="rightIconsView" destination="yhm-fO-yYD" id="EJl-T2-Bad"/>
                         <outlet property="scrollView" destination="kC2-4q-X1H" id="q4x-m0-KXo"/>
                         <outlet property="singleMessageTrayView" destination="QUR-HH-4qo" id="1G3-Pc-qZb"/>
@@ -119,6 +131,7 @@
         <image name="list_icon" width="25" height="25"/>
         <image name="message" width="320" height="86"/>
         <image name="nav" width="320" height="65"/>
+        <image name="reschedule" width="320" height="568"/>
         <image name="search" width="320" height="42"/>
     </resources>
 </document>

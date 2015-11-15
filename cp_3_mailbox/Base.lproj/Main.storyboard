@@ -90,6 +90,10 @@
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="reschedule" id="cfl-uP-pPw">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                         <autoresizingMask key="autoresizingMask"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="o2R-QR-na0" appends="YES" id="3Ol-OG-8Yn"/>
+                                        </connections>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -102,6 +106,7 @@
                     <connections>
                         <outlet property="archiveIcon" destination="1RS-tq-87t" id="b0H-ci-le1"/>
                         <outlet property="deleteIcon" destination="Jxw-iQ-5np" id="I3i-3W-h1m"/>
+                        <outlet property="feedImageView" destination="bbH-GE-16F" id="tHP-qc-KvE"/>
                         <outlet property="laterIcon" destination="R3r-eW-vyt" id="wVL-HJ-bCl"/>
                         <outlet property="leftIconsView" destination="uhL-Kp-25h" id="c7G-ou-17U"/>
                         <outlet property="listIcon" destination="7bR-98-oWe" id="T7w-uU-XGt"/>
@@ -118,6 +123,11 @@
                         <action selector="didPanSingleMessage:" destination="F0S-mk-uC2" id="To6-wE-B6Q"/>
                     </connections>
                 </panGestureRecognizer>
+                <tapGestureRecognizer id="o2R-QR-na0" userLabel="Tap reschedule Recognizer">
+                    <connections>
+                        <action selector="didTapRescheduleView:" destination="F0S-mk-uC2" id="721-49-4nB"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="627" y="330"/>
         </scene>

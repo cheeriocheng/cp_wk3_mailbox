@@ -14,6 +14,7 @@ class MailboxViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var singleMessageTrayView: UIView!
     @IBOutlet weak var rescheduleView: UIView!
+    @IBOutlet weak var feedImageView: UIImageView!
     
     var singleMessageTrayOriginalCenter: CGPoint!
     var rightIconsOriginalCenter: CGPoint!
@@ -78,7 +79,10 @@ class MailboxViewController: UIViewController {
             //trigger the next step
             if (endState == later){
                 print("show reschedule view ")
-                rescheduleView.alpha =  1
+                UIView.animateWithDuration(0.4) { () -> Void in
+                    self.rescheduleView.alpha =  1
+                }
+                
                 
             }else {
                 
@@ -116,16 +120,16 @@ class MailboxViewController: UIViewController {
             //start to show later icon, grey bg
         else if (dx < 0 ){
             panBG.backgroundColor = UIColor.lightGrayColor()
-
+            
             //later icon alpha transition from 0 to 1
             laterIcon.alpha = dx/(-60)
-
+            
             
         }
             // start to show archive icon, grey bg
         else if (dx < 60 ){
             panBG.backgroundColor = UIColor.lightGrayColor()
-
+            
             archiveIcon.alpha = dx/60
         }
             //show archive icon, green bg
@@ -137,11 +141,11 @@ class MailboxViewController: UIViewController {
             endState = archive
             
         }
-        // show delete icon, red bg
+            // show delete icon, red bg
         else {
             deleteIcon.alpha = 1
             archiveIcon.alpha = 0
-             leftIconsView.center.x = leftIconsOriginalCenter.x - 60 + dx
+            leftIconsView.center.x = leftIconsOriginalCenter.x - 60 + dx
             panBG.backgroundColor = UIColor.redColor()
             endState = delete
             
@@ -171,6 +175,23 @@ class MailboxViewController: UIViewController {
         
         rescheduleView.alpha =  0
     }
+    
+    @IBAction func didTapRescheduleView(sender: UITapGestureRecognizer) {
+        print("tap")
+        //disappear
+        UIView.animateWithDuration(0.3) { () -> Void in
+            self.rescheduleView.alpha =  0
+        }
+     
+        //move the feed up
+        UIView.animateWithDuration(0.6) { () -> Void in
+            self.feedImageView.center.y  = self.feedImageView.center.y  - 86
+        }
+        
+        
+    }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

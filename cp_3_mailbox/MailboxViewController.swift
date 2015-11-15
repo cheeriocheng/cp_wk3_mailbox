@@ -75,10 +75,7 @@ class MailboxViewController: UIViewController {
             print("endstate ", endState)
             
             
-            
             //upon releasing, return to original position
-            
-            
             resetVisuals()
             
             
@@ -97,30 +94,45 @@ class MailboxViewController: UIViewController {
             listIcon.alpha = 1
             endState = list
         }
-            //later icon moves with the message, yellow bg,
+            //later icon moves with the message, yellow bg
         else if (dx < -60){
             panBG.backgroundColor = myYellowColor
             rightIconsView.center.x = rightIconsOriginalCenter.x + 60 + dx
-
             laterIcon.alpha = 1
             listIcon.alpha = 0
-            
             endState = later
         }
             //start to show later icon, grey bg
         else if (dx < 0 ){
-            let f = dx/(-60)
-            
+            panBG.backgroundColor = UIColor.lightGrayColor()
+
             //later icon alpha transition from 0 to 1
-            laterIcon.alpha = f
+            laterIcon.alpha = dx/(-60)
+
             
         }
-            // archive
-        else if (dx > 60 ){
+            // start to show archive icon, grey bg
+        else if (dx < 60 ){
+            panBG.backgroundColor = UIColor.lightGrayColor()
+
+            archiveIcon.alpha = dx/60
+        }
+            //show archive icon, green bg
+        else if (dx < 260){
+            archiveIcon.alpha = 1
+            leftIconsView.center.x = leftIconsOriginalCenter.x - 60 + dx
+            deleteIcon.alpha = 0
+            panBG.backgroundColor = UIColor.greenColor()
+            endState = archive
             
         }
-            //delte
-        else if (dx > 260){
+        // show delete icon, red bg
+        else {
+            deleteIcon.alpha = 1
+            archiveIcon.alpha = 0
+             leftIconsView.center.x = leftIconsOriginalCenter.x - 60 + dx
+            panBG.backgroundColor = UIColor.redColor()
+            endState = delete
             
         }
     }

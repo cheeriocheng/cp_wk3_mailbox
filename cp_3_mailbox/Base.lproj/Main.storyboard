@@ -21,43 +21,46 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="1462"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="help_label" id="H4E-3V-5W6">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="37"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="search" id="1pO-vs-5ze">
                                         <rect key="frame" x="0.0" y="36" width="320" height="42"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="help_label" id="H4E-3V-5W6">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" id="Hw2-SI-7tp" userLabel="panBG">
+                                        <rect key="frame" x="0.0" y="74" width="320" height="86"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
                                     <view contentMode="scaleToFill" id="uhL-Kp-25h" userLabel="leftIconsView">
                                         <rect key="frame" x="0.0" y="75" width="320" height="86"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="archive_icon" id="1RS-tq-87t">
-                                                <rect key="frame" x="15" y="34" width="25" height="25"/>
+                                                <rect key="frame" x="15" y="32" width="25" height="25"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </imageView>
                                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="delete_icon" id="Jxw-iQ-5np">
-                                                <rect key="frame" x="15" y="34" width="25" height="25"/>
+                                                <rect key="frame" x="15" y="32" width="25" height="25"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </imageView>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                     <view contentMode="scaleToFill" id="yhm-fO-yYD" userLabel="rightIconsView">
                                         <rect key="frame" x="0.0" y="75" width="320" height="86"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="list_icon" id="7bR-98-oWe">
-                                                <rect key="frame" x="281" y="34" width="25" height="25"/>
+                                                <rect key="frame" x="281" y="32" width="25" height="25"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </imageView>
                                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="later_icon" id="R3r-eW-vyt">
-                                                <rect key="frame" x="281" y="34" width="25" height="25"/>
+                                                <rect key="frame" x="281" y="32" width="25" height="25"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </imageView>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                     <view contentMode="scaleToFill" id="QUR-HH-4qo" userLabel="singleMessageTrayView">
                                         <rect key="frame" x="0.0" y="74" width="320" height="86"/>
@@ -86,6 +89,13 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="1500"/>
                     <connections>
+                        <outlet property="archiveIcon" destination="1RS-tq-87t" id="b0H-ci-le1"/>
+                        <outlet property="deleteIcon" destination="Jxw-iQ-5np" id="I3i-3W-h1m"/>
+                        <outlet property="laterIcon" destination="R3r-eW-vyt" id="wVL-HJ-bCl"/>
+                        <outlet property="leftIconsView" destination="uhL-Kp-25h" id="c7G-ou-17U"/>
+                        <outlet property="listIcon" destination="7bR-98-oWe" id="T7w-uU-XGt"/>
+                        <outlet property="panBG" destination="Hw2-SI-7tp" id="d9U-4G-2ay"/>
+                        <outlet property="rightIconsView" destination="yhm-fO-yYD" id="EJl-T2-Bad"/>
                         <outlet property="scrollView" destination="kC2-4q-X1H" id="q4x-m0-KXo"/>
                         <outlet property="singleMessageTrayView" destination="QUR-HH-4qo" id="1G3-Pc-qZb"/>
                     </connections>

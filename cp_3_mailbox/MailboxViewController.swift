@@ -205,7 +205,6 @@ class MailboxViewController: UIViewController {
     
     @IBAction func didScreenEdgePan(sender: UIScreenEdgePanGestureRecognizer) {
         print("didScreenEdgePan")
-        
         //yea whatever. this is never called .
     }
     
@@ -228,17 +227,27 @@ class MailboxViewController: UIViewController {
             
 //            print("Gesture changed at: \(point)")
             
-           mainView.center = CGPoint(x: mainViewOriginalCenter.x + translation.x, y: mainViewOriginalCenter.y)
+           mainView.center.x = mainViewOriginalCenter.x + translation.x
             
             
             
         }
             
         else if panGestureRecognizer.state == UIGestureRecognizerState.Ended {
+            print("Gesture ended at ", mainView.center.x, "moved ",mainView.center.x - mainViewOriginalCenter.x )
+            let w = UIScreen.mainScreen().bounds.width
             
+            //snap to left 
+            if (mainView.center.x - mainViewOriginalCenter.x < w/2.0){
+                 mainView.center.x = mainViewOriginalCenter.x
+            }
             
+            //snap to right
+            else {
+                mainView.center.x = mainViewOriginalCenter.x + w + 20
+            }
             
-//            print("Gesture ended at: \(point)")
+
             
         }
         

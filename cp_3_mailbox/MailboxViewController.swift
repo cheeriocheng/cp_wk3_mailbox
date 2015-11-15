@@ -14,6 +14,8 @@ class MailboxViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var singleMessageTrayView: UIView!
     var singleMessageTrayOriginalCenter: CGPoint!
+    var rightIconsOriginalCenter: CGPoint!
+    var leftIconsOriginalCenter: CGPoint!
     
     @IBOutlet weak var archiveIcon: UIImageView!
     @IBOutlet weak var deleteIcon: UIImageView!
@@ -25,6 +27,10 @@ class MailboxViewController: UIViewController {
     @IBOutlet weak var panBG: UIView!
     
     var endState  = 0
+    let list = 1
+    let later = 2
+    let archive = 3
+    let delete = 4
     
     
     let myYellowColor = UIColor(
@@ -39,6 +45,8 @@ class MailboxViewController: UIViewController {
         super.viewDidLoad()
         scrollView.contentSize = CGSize(width: 320, height: 1400)
         singleMessageTrayOriginalCenter = singleMessageTrayView.center
+        rightIconsOriginalCenter = rightIconsView.center
+        leftIconsOriginalCenter = leftIconsView.center
         
         resetVisuals()
         
@@ -51,61 +59,67 @@ class MailboxViewController: UIViewController {
         
         
         if panGestureRecognizer.state == UIGestureRecognizerState.Began {
-           // print("Gesture began at: \(point)")
+            // print("Gesture began at: \(point)")
             
         } else if panGestureRecognizer.state == UIGestureRecognizerState.Changed {
             //print("Gesture changed at: \(point)")
             let newCenterX = singleMessageTrayOriginalCenter.x + translation.x
             singleMessageTrayView.center = CGPoint(x: newCenterX, y: singleMessageTrayOriginalCenter.y)
-
+            
             //change the look underneath
             changePanVisual( translation.x )
         }
         else if panGestureRecognizer.state == UIGestureRecognizerState.Ended {
             //print("Gesture ended at: \(point)")
             
-           print("endstate ", endState)
-
+            print("endstate ", endState)
+            
             
             
             //upon releasing, return to original position
             
             
             resetVisuals()
-
+            
             
         }
         
     }
     
     func changePanVisual( dx: CGFloat ){
-       // print(dx)
+        // print(dx)
         
         // list icon, brown bg
         if (dx < -260 ){
             panBG.backgroundColor = UIColor.brownColor()
+            rightIconsView.center.x = rightIconsOriginalCenter.x + 60 + dx
             laterIcon.alpha = 0
-            listIcon.alpha = 1 
-            endState = 1
+            listIcon.alpha = 1
+            endState = list
         }
-        //later icon, yellow bg
+            //later icon moves with the message, yellow bg,
         else if (dx < -60){
-             panBG.backgroundColor = myYellowColor
+            panBG.backgroundColor = myYellowColor
+            rightIconsView.center.x = rightIconsOriginalCenter.x + 60 + dx
+
+            laterIcon.alpha = 1
+            listIcon.alpha = 0
             
+            endState = later
         }
-        //start to show later icon, grey bg
+            //start to show later icon, grey bg
         else if (dx < 0 ){
             let f = dx/(-60)
-
+            
             //later icon alpha transition from 0 to 1
             laterIcon.alpha = f
             
         }
-        // archive 
+            // archive
         else if (dx > 60 ){
             
         }
-        //delte 
+            //delte
         else if (dx > 260){
             
         }
@@ -117,17 +131,18 @@ class MailboxViewController: UIViewController {
     func resetVisuals(){
         //TODO add animation
         singleMessageTrayView.center = singleMessageTrayOriginalCenter
-    
+        rightIconsView.center = rightIconsOriginalCenter
+        leftIconsView.center = leftIconsOriginalCenter
+        
         archiveIcon.alpha =  0
         deleteIcon.alpha = 0
         laterIcon.alpha = 0
         listIcon.alpha = 0
         
         panBG.backgroundColor = UIColor.lightGrayColor()
-//        leftIconsView.backgroundColor = UIColor.lightGrayColor()
-//        rightIconsView.backgroundColor = UIColor.lightGrayColor()
-
         
+        rightIconsView.center =         rightIconsOriginalCenter
+        leftIconsView.center =    leftIconsOriginalCenter
         
         endState  = 0
         

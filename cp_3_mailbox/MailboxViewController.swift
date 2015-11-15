@@ -29,6 +29,11 @@ class MailboxViewController: UIViewController {
     @IBOutlet weak var leftIconsView: UIView!
     @IBOutlet weak var panBG: UIView!
     
+    @IBOutlet var mainScreenPan: UIScreenEdgePanGestureRecognizer!
+    
+    @IBOutlet weak var mainView: UIView!
+    var mainViewOriginalCenter: CGPoint!
+    
     var endState  = 0
     let list = 1
     let later = 2
@@ -50,6 +55,12 @@ class MailboxViewController: UIViewController {
         singleMessageTrayOriginalCenter = singleMessageTrayView.center
         rightIconsOriginalCenter = rightIconsView.center
         leftIconsOriginalCenter = leftIconsView.center
+        mainViewOriginalCenter = mainView.center
+        
+        mainScreenPan = UIScreenEdgePanGestureRecognizer(target: self, action: "onEdgePan:")
+        mainScreenPan.edges = UIRectEdge.Left
+        view.addGestureRecognizer(mainScreenPan)
+        
         
         resetVisuals()
         
@@ -192,6 +203,49 @@ class MailboxViewController: UIViewController {
     }
     
     
+    @IBAction func didScreenEdgePan(sender: UIScreenEdgePanGestureRecognizer) {
+        print("didScreenEdgePan")
+        
+        //yea whatever. this is never called .
+    }
+    
+    func onEdgePan(panGestureRecognizer: UIScreenEdgePanGestureRecognizer){
+         print("onedgepan")
+
+//        let point = panGestureRecognizer.locationInView(view) //the finger position
+        
+        let translation = panGestureRecognizer.translationInView(view) //the relavent movement
+        
+        
+        
+        if panGestureRecognizer.state == UIGestureRecognizerState.Began {
+            
+//            print("Gesture began at: \(point)")
+            
+            
+            
+        } else if panGestureRecognizer.state == UIGestureRecognizerState.Changed {
+            
+//            print("Gesture changed at: \(point)")
+            
+           mainView.center = CGPoint(x: mainViewOriginalCenter.x + translation.x, y: mainViewOriginalCenter.y)
+            
+            
+            
+        }
+            
+        else if panGestureRecognizer.state == UIGestureRecognizerState.Ended {
+            
+            
+            
+//            print("Gesture ended at: \(point)")
+            
+        }
+        
+        
+        
+        
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
